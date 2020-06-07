@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package reverse;
+
+message ReverseRequest {
+    string payload = 1;
+}
+message ReverseResponse {
+    string result = 1;
+}
