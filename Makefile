@@ -6,3 +6,6 @@ reverse_pb2.py reverse_pb2.pyi src/Reverse.elm: reverse.proto
 
 run: index.html __main__.py
 	python .
+
+clean:
+	rm -f reverse_pb2.py* src/Reverse.elm index.html
