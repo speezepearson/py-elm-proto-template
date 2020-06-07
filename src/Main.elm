@@ -36,7 +36,9 @@ sendReverseRequest : String -> Cmd Msg
 sendReverseRequest s =
     Http.post
         { url = "/api/reverse"
-        , body = Http.bytesBody "application/octet-stream" <| Protobuf.Encode.encode <| Reverse.toReverseRequestEncoder { payload = s }
+        , body = Http.bytesBody "application/octet-stream"
+            <| Protobuf.Encode.encode
+            <| Reverse.toReverseRequestEncoder { payload = s }
         , expect = Protobuf.Decode.expectBytes TextReversed
             <| Protobuf.Decode.map (\{result} -> {original=s, reversed=result})
             <| Reverse.reverseResponseDecoder
